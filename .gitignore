@@ -1,9 +1,0 @@
-data.csv
-artifacts/test.csv
-artifacts/train.csv
-artifacts/raw_data.csv
-
-
-
-artifacts/data_transformation/test_arr.npy
-artifacts/data_transformation/train_arr.npy
