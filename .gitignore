@@ -1,2 +1,9 @@
 data.csv
-artifacts
+artifacts/test.csv
+artifacts/train.csv
+artifacts/raw_data.csv
+
+
+artifacts/data_transformation/feature_names.npy
+artifacts/data_transformation/test_arr.npy
+artifacts/data_transformation/train_arr.npy
