@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supply Chain Risk Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #004d7a, #008793);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px 40px;
+            border-radius: 15px;
+            width: 420px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #00c6ff;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0072ff;
+        }
+        .result {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 1.2em;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Supply Chain Risk Prediction</h2>
+        <form action="/predict" method="POST">
+            <input type="number" step="any" name="temperature" placeholder="Temperature" required>
+            <input type="number" step="any" name="humidity" placeholder="Humidity" required>
+            <input type="number" step="any" name="vibration_level" placeholder="Vibration Level" required>
+            <input type="number" name="stock_quantity" placeholder="Stock Quantity" required>
+            <input type="number" step="any" name="supplier_rating" placeholder="Supplier Rating" required>
+            <input type="number" name="delivery_delay_days" placeholder="Delivery Delay Days" required>
+
+            <select name="location" required>
+                <option value="Warehouse_A">Warehouse_A</option>
+                <option value="Hub_C">Hub_C</option>
+                <option value="Port_B">Port_B</option>
+            </select>
+
+            <select name="inventory_status" required>
+                <option value="in-stock">in-stock</option>
+                <option value="low">low</option>
+                <option value="critical">critical</option>
+            </select>
+
+            <select name="logistics_partner" required>
+                <option value="DHL">DHL</option>
+                <option value="UPS">UPS</option>
+                <option value="FedEx">FedEx</option>
+                <option value="BlueDart">BlueDart</option>
+                <option value="LocalCarrier_X">LocalCarrier_X</option>
+            </select>
+
+            <select name="shipment_status" required>
+                <option value="delivered">delivered</option>
+                <option value="in-transit">in-transit</option>
+                <option value="delayed">delayed</option>
+            </select>
+
+            <select name="weather_condition" required>
+                <option value="sunny">sunny</option>
+                <option value="rainy">rainy</option>
+                <option value="storm">storm</option>
+            </select>
+
+            <!-- ✅ Updated dropdowns for text-encoded fields -->
+            <label for="social_media_feed">Social Media Feed:</label>
+            <select name="social_media_feed" required>
+                <option value="Supply chain normal">Supply chain normal</option>
+                <option value="Possible delay reported">Possible delay reported</option>
+                <option value="Severe disruption warning">Severe disruption warning</option>
+            </select>
+
+            <label for="news_alert">News Alert:</label>
+            <select name="news_alert" required>
+                <option value="Stable market">Stable market</option>
+                <option value="Minor strikes reported">Minor strikes reported</option>
+                <option value="Port shutdown due to strike">Port shutdown due to strike</option>
+            </select>
+
+            <label for="system_log_message">System Log Message:</label>
+            <select name="system_log_message" required>
+                <option value="System normal">System normal</option>
+                <option value="Warning threshold exceeded">Warning threshold exceeded</option>
+                <option value="Critical error detected">Critical error detected</option>
+            </select>
+
+            <button type="submit">Predict Risk</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
