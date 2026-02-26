@@ -287,4 +287,293 @@
 
     <footer>© 2025 SmartChain | AI-Powered Supply Chain Risk Detection</footer>
 </body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supply Chain Risk Prediction</title>
+    <style>
+        /* Modern Font Stack & Box Sizing */
+        :root {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+                Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1f4068, #162447);
+            color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 2rem; /* Add padding for all screen sizes */
+        }
+
+        /* Responsive Container - Made wider for 2-column layout */
+        .container {
+            width: 100%;
+            max-width: 850px; /* Increased max-width for the grid */
+            background-color: rgba(255, 255, 255, 0.08);
+            padding: 35px 45px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* --- CSS GRID LAYOUT --- */
+        form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Create 2 equal columns */
+            gap: 1.25rem; /* Space between grid items */
+        }
+
+        /* Form Grouping for better layout */
+        .form-group {
+            /* margin-bottom: 1.25rem; */ /* Removed - 'gap' now handles this */
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #cce7ff;
+            font-weight: 500;
+        }
+
+        /* Consistent Input/Select Styling */
+        input,
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            font-size: 1rem;
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.25);
+            border-color: #00c6ff;
+        }
+
+        select option {
+            background: #ffffff;
+            color: #333;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px 15px;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+            margin-top: 1rem;
+            
+            /* --- GRID CHANGE --- */
+            grid-column: 1 / -1; /* Make button span both columns */
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #0072ff, #00c6ff);
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding: 12px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            font-size: 1.1em;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+        }
+
+        footer {
+            position: static;
+            text-align: center;
+            width: 100%;
+            padding: 2rem 0 1rem 0;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* --- RESPONSIVE MEDIA QUERY --- */
+        /* Stack to 1 column on tablets and phones */
+        @media (max-width: 768px) {
+            form {
+                grid-template-columns: 1fr; /* Back to one column */
+            }
+
+            button {
+                grid-column: auto; /* Reset column span */
+            }
+
+            .container {
+                padding: 25px;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Supply Chain Risk Prediction</h2>
+        
+        <form action="/predict" method="POST">
+
+            <div class="form-group">
+                <label for="temperature">Temperature (°C)</label>
+                <input type="number" step="any" id="temperature" name="temperature" placeholder="e.g., 25.5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="humidity">Humidity (%)</label>
+                <input type="number" step="any" id="humidity" name="humidity" placeholder="e.g., 60" required>
+            </div>
+
+            <div class="form-group">
+                <label for="vibration_level">Vibration Level</label>
+                <input type="number" step="any" id="vibration_level" name="vibration_level" placeholder="e.g., 0.5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="stock_quantity">Stock Quantity</label>
+                <input type="number" id="stock_quantity" name="stock_quantity" placeholder="e.g., 500" required>
+            </div>
+
+            <div class="form-group">
+                <label for="supplier_rating">Supplier Rating</label>
+                <input type="number" step="any" id="supplier_rating" name="supplier_rating" placeholder="e.g., 4.2" required>
+            </div>
+
+            <div class="form-group">
+                <label for="delivery_delay_days">Delivery Delay (Days)</label>
+                <input type="number" id="delivery_delay_days" name="delivery_delay_days" placeholder="e.g., 2" required>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Location</label>
+                <select id="location" name="location" required>
+                    <option value="Warehouse_A">Warehouse_A</option>
+                    <option value="Hub_C">Hub_C</option>
+                    <option value="Port_B">Port_B</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="inventory_status">Inventory Status</label>
+                <select id="inventory_status" name="inventory_status" required>
+                    <option value="in-stock">In-stock</option>
+                    <option value="low">Low</option>
+                    <option value="critical">Critical</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="logistics_partner">Logistics Partner</label>
+                <select id="logistics_partner" name="logistics_partner" required>
+                    <option value="DHL">DHL</option>
+                    <option value="UPS">UPS</option>
+                    <option value="FedEx">FedEx</option>
+                    <option value="BlueDart">BlueDart</option>
+                    <option value="LocalCarrier_X">LocalCarrier_X</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="shipment_status">Shipment Status</label>
+                <select id="shipment_status" name="shipment_status" required>
+                    <option value="delivered">Delivered</option>
+                    <option value="in-transit">In-transit</option>
+                    <option value="delayed">Delayed</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="weather_condition">Weather Condition</label>
+                <select id="weather_condition" name="weather_condition" required>
+                    <option value="sunny">Sunny</option>
+                    <option value="rainy">Rainy</option>
+                    <option value="storm">Storm</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="social_media_feed">Social Media Feed</label>
+                <select id="social_media_feed" name="social_media_feed" required>
+                    <option value="Supply chain normal">Supply chain normal</option>
+                    <option value="Possible delay reported">Possible delay reported</option>
+                    <option value="Severe disruption warning">Severe disruption warning</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="news_alert">News Alert</label>
+                <select id="news_alert" name="news_alert" required>
+                    <option value="Stable market">Stable market</option>
+                    <option value="Minor strikes reported">Minor strikes reported</option>
+                    <option value="Port shutdown due to strike">Port shutdown due to strike</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="system_log_message">System Log Message</label>
+                <select id="system_log_message" name="system_log_message" required>
+                    <option value="System normal">System normal</option>
+                    <option value="Warning threshold exceeded">Warning threshold exceeded</option>
+                    <option value="Critical error detected">Critical error detected</option>
+                </select>
+            </div>
+
+            <button type="submit">Predict Risk</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+
+    <footer>© 2025 SmartChain | AI-Powered Supply Chain Risk Detection</footer>
+</body>
 </html>
